@@ -1,0 +1,8 @@
+<?php
+
+/**
+ * @file
+ * Code for the Bootstrap Paragraphs feature.
+ */
+
+include_once 'bootstrap_paragraphs_features.features.inc';
