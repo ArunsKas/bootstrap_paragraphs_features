@@ -6,3 +6,105 @@
  */
 
 include_once 'bootstrap_paragraphs_features.features.inc';
+
+/**
+ * Process variables for paragraphs-items.tpl.php.
+ */
+function bootstrap_paragraphs_preprocess_paragraphs_items(&$variables, $hook) {
+  $variables['classes_array'] = "";
+  $variables['classes_array'][] = "paragraphs";
+}
+
+/**
+ * Implements Paragraphs item hook_preprocess_entity().
+ */
+function bootstrap_paragraphs_preprocess_entity(&$variables) {
+  if ($variables['entity_type'] == 'paragraphs_item') {
+    // Reset classes.
+    $variables['classes_array'] = '';
+    // Add ID.
+    $entity = $variables['paragraphs_item'];
+    $paragraph_id = 'paragraph-id-' . $entity->item_id;
+    $variables['attributes_array']['id'] = $paragraph_id;
+    // Also makes it available as a normal variable in the templates.
+    $variables['paragraph_id'] = $paragraph_id;
+
+    // The idea that these 2 rules could live in the first IF.
+    // Doesn't work because machine names are underscores and we need dashes.
+    // $variables['classes_array'][] = 'paragraph paragraph--type--' .
+    // $variables['elements']['#bundle'];
+    //
+    // Also, I couldn't get view mode to work.
+    // $variables['classes_array'][] = 'paragraph--view-mode--' .
+    // $variables['elements']['#view_mode'];.
+  }
+  // So I loop through all of the entity types here.
+  if ($variables['entity_type'] == 'paragraphs_item' && $variables['elements']['#bundle'] == 'bp_blank') {
+    $variables['classes_array'][] = 'paragraph paragraph--type--bp-blank';
+  }
+  if ($variables['entity_type'] == 'paragraphs_item' && $variables['elements']['#bundle'] == 'bp_block') {
+    $variables['classes_array'][] = 'paragraph paragraph--type--bp-block';
+  }
+  if ($variables['entity_type'] == 'paragraphs_item' && $variables['elements']['#bundle'] == 'bp_carousel') {
+    $variables['classes_array'][] = 'paragraph paragraph--type--bp-carousel';
+  }
+  if ($variables['entity_type'] == 'paragraphs_item' && $variables['elements']['#bundle'] == 'bp_columns') {
+    $variables['classes_array'][] = 'paragraph paragraph--type--bp-columns';
+  }
+  if ($variables['entity_type'] == 'paragraphs_item' && $variables['elements']['#bundle'] == 'bp_columns_three_uneven') {
+    $variables['classes_array'][] = 'paragraph paragraph--type--bp-columns-three-uneven';
+  }
+  if ($variables['entity_type'] == 'paragraphs_item' && $variables['elements']['#bundle'] == 'bp_columns_two_uneven') {
+    $variables['classes_array'][] = 'paragraph paragraph--type--bp-columns-two-uneven';
+  }
+  if ($variables['entity_type'] == 'paragraphs_item' && $variables['elements']['#bundle'] == 'bp_image') {
+    $variables['classes_array'][] = 'paragraph paragraph--type--bp-image';
+  }
+  if ($variables['entity_type'] == 'paragraphs_item' && $variables['elements']['#bundle'] == 'bp_simple') {
+    $variables['classes_array'][] = 'paragraph paragraph--type--bp-simple';
+  }
+  if ($variables['entity_type'] == 'paragraphs_item' && $variables['elements']['#bundle'] == 'xeno_hero') {
+    $variables['classes_array'][] = 'paragraph paragraph--type--xeno-hero';
+  }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function bootstrap_paragraphs_theme($existing, $type, $theme, $path) {
+  return [
+    'paragraphs_items' => [
+      'base hook' => 'paragraph',
+    ],
+    'paragraphs_item' => [
+      'base hook' => 'paragraph',
+    ],
+    'paragraphs_item__bp_carousel' => [
+      'base hook' => 'paragraph',
+    ],
+    'paragraphs_item__bp_tabs' => [
+      'base hook' => 'paragraph',
+    ],
+    'paragraphs_item__bp_columns_three_uneven' => [
+      'base hook' => 'paragraph',
+    ],
+    'paragraphs_item__bp_columns_two_uneven' => [
+      'base hook' => 'paragraph',
+    ],
+    'paragraphs_item__bp_image' => [
+      'base hook' => 'paragraph',
+    ],
+    'paragraphs_item__bp_modal' => [
+      'base hook' => 'paragraph',
+    ],
+    'field__field_column_content' => [
+      'base hook' => 'paragraph',
+    ],
+    'field__field_column_content_2' => [
+      'base hook' => 'paragraph',
+    ],
+    'field__field_column_content_3' => [
+      'base hook' => 'paragraph',
+    ],
+  ];
+}
