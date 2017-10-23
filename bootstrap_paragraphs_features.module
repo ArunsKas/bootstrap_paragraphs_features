@@ -5,7 +5,7 @@
  * Code for the Bootstrap Paragraphs feature.
  */
 
-include_once 'bootstrap_paragraphs_features.features.inc';
+//include_once 'bootstrap_paragraphs_features.features.inc';
 
 /**
  * Process variables for paragraphs-items.tpl.php.
@@ -79,48 +79,57 @@ function bootstrap_paragraphs_preprocess_entity(&$variables) {
 }
 
 /**
- * Implements hook_theme().
+ * Implements hook_theme_registry_alter().
  *
- * Hook into the theme to add the templates.  This is from the Drupal 8 module.
- * It currently does not work.  Need a Drupal 7 solution.
- */
-function bootstrap_paragraphs_theme($existing, $type, $theme, $path) {
-  return [
-    'paragraphs_items' => [
-      'base hook' => 'paragraph',
-    ],
-    'paragraphs_item' => [
-      'base hook' => 'paragraph',
-    ],
-    'paragraphs_item__bp_carousel' => [
-      'base hook' => 'paragraph',
-    ],
-    'paragraphs_item__bp_tabs' => [
-      'base hook' => 'paragraph',
-    ],
-    'paragraphs_item__bp_card' => [
-      'base hook' => 'paragraph',
-    ],
-    'paragraphs_item__bp_columns_three_uneven' => [
-      'base hook' => 'paragraph',
-    ],
-    'paragraphs_item__bp_columns_two_uneven' => [
-      'base hook' => 'paragraph',
-    ],
-    'paragraphs_item__bp_image' => [
-      'base hook' => 'paragraph',
-    ],
-    'paragraphs_item__bp_modal' => [
-      'base hook' => 'paragraph',
-    ],
-    'field__field_column_content' => [
-      'base hook' => 'paragraph',
-    ],
-    'field__field_column_content_2' => [
-      'base hook' => 'paragraph',
-    ],
-    'field__field_column_content_3' => [
-      'base hook' => 'paragraph',
-    ],
-  ];
+ * Hook into the theme to add the templates.
+
+function bootstrap_paragraphs_theme_registry_alter(&$theme_registry) {
+  // Get the path of this module.
+  $module_path = drupal_get_path('module', 'bootstrap_paragraphs');
+  // Override the default template with our own.
+  if (isset($theme_registry['paragraphs_items'])) {
+    $theme_registry['paragraphs_items']['theme path'] = $module_path;
+    $theme_registry['paragraphs_items']['template'] = $module_path . '/templates/paragraphs-items';
+  }
+  if (isset($theme_registry['paragraphs_item'])) {
+    $theme_registry['paragraphs_item']['theme path'] = $module_path;
+    $theme_registry['paragraphs_item']['template'] = $module_path . '/templates/paragraphs-item';
+  }
+  if (isset($theme_registry['paragraphs_item__bp_carousel'])) {
+    $theme_registry['paragraphs_item__bp_carousel']['theme path'] = $module_path;
+    $theme_registry['paragraphs_item__bp_carousel']['template'] = $module_path . '/templates/paragraphs-item--bp-carousel';
+  }
+  if (isset($theme_registry['paragraphs_item__bp_tabs'])) {
+    $theme_registry['paragraphs_item__bp_tabs']['theme path'] = $module_path;
+    $theme_registry['paragraphs_item__bp_tabs']['template'] = $module_path . '/templates/paragraphs-item--bp-tabs';
+  }
+  if (isset($theme_registry['paragraphs_item__bp_columns_three_uneven'])) {
+    $theme_registry['paragraphs_item__bp_columns_three_uneven']['theme path'] = $module_path;
+    $theme_registry['paragraphs_item__bp_columns_three_uneven']['template'] = $module_path . '/templates/paragraphs-item--bp-columns-three-uneven';
+  }
+  if (isset($theme_registry['paragraphs_item__bp_columns_two_uneven'])) {
+    $theme_registry['paragraphs_item__bp_columns_two_uneven']['theme path'] = $module_path;
+    $theme_registry['paragraphs_item__bp_columns_two_uneven']['template'] = $module_path . '/templates/paragraphs-item--bp-columns-two-uneven';
+  }
+  if (isset($theme_registry['paragraphs_item__bp_image'])) {
+    $theme_registry['paragraphs_item__bp_image']['theme path'] = $module_path;
+    $theme_registry['paragraphs_item__bp_image']['template'] = $module_path . '/templates/paragraphs-item--bp-image';
+  }
+  if (isset($theme_registry['paragraphs_item__xeno_hero'])) {
+    $theme_registry['paragraphs_item__xeno_hero']['theme path'] = $module_path;
+    $theme_registry['paragraphs_item__xeno_hero']['template'] = $module_path . '/templates/paragraphs-item--xeno-hero';
+  }
+  if (isset($theme_registry['field__field_column_content'])) {
+    $theme_registry['field__field_column_content']['theme path'] = $module_path;
+    $theme_registry['field__field_column_content']['template'] = $module_path . '/templates/field--field-column-content';
+  }
+  if (isset($theme_registry['field__field_column_content_2'])) {
+    $theme_registry['field__field_column_content_2']['theme path'] = $module_path;
+    $theme_registry['field__field_column_content_2']['template'] = $module_path . '/templates/field--field-column-content-2';
+  }
+  if (isset($theme_registry['field__field_column_content_3'])) {
+    $theme_registry['field__field_column_content_3']['theme path'] = $module_path;
+    $theme_registry['field__field_column_content_3']['template'] = $module_path . '/templates/field--field-column-content-3';
+  }
 }
+ */
