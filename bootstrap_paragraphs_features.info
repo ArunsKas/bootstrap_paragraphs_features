@@ -94,6 +94,7 @@ features[paragraphs][] = bp_image
 features[paragraphs][] = bp_simple
 features[paragraphs][] = bp_view
 features[paragraphs][] = xeno_hero
+scripts[] = js/xeno-hero.js
 stylesheets[all][] = css/bootstrap-paragraphs.css
 stylesheets[all][] = css/bootstrap-paragraphs-colors.css
 stylesheets[all][] = css/bootstrap-paragraphs-accordion.css
