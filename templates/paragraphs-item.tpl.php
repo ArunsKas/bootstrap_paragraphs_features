@@ -27,17 +27,17 @@
  */
 ?>
 <?php
-  hide($content['field_background']);
-  hide($content['field_width']);
+  hide($content['bp_background']);
+  hide($content['bp_width']);
 
   $width_field = '';
-  if (!empty($content['field_width'])) {
-    $width_field = ' ' . render($content['field_width']);
+  if (!empty($content['bp_width'])) {
+    $width_field = ' ' . render($content['bp_width']);
   }
 
   $background_field = '';
-  if (!empty($content['field_background'])) {
-    $background_field = ' ' . render($content['field_background']);
+  if (!empty($content['bp_background'])) {
+    $background_field = ' ' . render($content['bp_background']);
   }
 
   $classes_combined = '';

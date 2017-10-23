@@ -27,29 +27,29 @@
  */
 ?>
 <?php
-  hide($content['field_background']);
-  hide($content['field_width']);
-  hide($content['field_padding_b']);
-  hide($content['field_padding_h']);
+  hide($content['bp_background']);
+  hide($content['bp_width']);
+  hide($content['bp_padding_b']);
+  hide($content['bp_padding_h']);
 
   $width_field = '';
-  if (!empty($content['field_width'])) {
-    $width_field = ' ' . render($content['field_width']);
+  if (!empty($content['bp_width'])) {
+    $width_field = ' ' . render($content['bp_width']);
   }
 
   $background_field = '';
-  if (!empty($content['field_background'])) {
-    $background_field = ' ' . render($content['field_background']);
+  if (!empty($content['bp_background'])) {
+    $background_field = ' ' . render($content['bp_background']);
   }
 
   $padding_bottom_field = '';
-  if (!empty($content['field_padding_b'])) {
-    $padding_bottom_field = ' ' . render($content['field_padding_b']);
+  if (!empty($content['bp_padding_b'])) {
+    $padding_bottom_field = ' ' . render($content['bp_padding_b']);
   }
 
   $padding_horizontal_field = '';
-  if (!empty($content['field_padding_h'])) {
-    $padding_horizontal_field = ' ' . render($content['field_padding_h']);
+  if (!empty($content['bp_padding_h'])) {
+    $padding_horizontal_field = ' ' . render($content['bp_padding_h']);
   }
 
   $classes_combined = '';
