@@ -9,14 +9,20 @@ include_once 'bootstrap_paragraphs_features.features.inc';
 
 /**
  * Process variables for paragraphs-items.tpl.php.
+ *
+ * Hook into the Paragraph items to reset the classes.
  */
 function bootstrap_paragraphs_preprocess_paragraphs_items(&$variables, $hook) {
+  // Reset classes.
   $variables['classes_array'] = "";
+  // Add classes.
   $variables['classes_array'][] = "paragraphs";
 }
 
 /**
  * Implements Paragraphs item hook_preprocess_entity().
+ *
+ * Hook into the Paragraph item to add the ID and classes.
  */
 function bootstrap_paragraphs_preprocess_entity(&$variables) {
   if ($variables['entity_type'] == 'paragraphs_item') {
@@ -29,6 +35,7 @@ function bootstrap_paragraphs_preprocess_entity(&$variables) {
     // Also makes it available as a normal variable in the templates.
     $variables['paragraph_id'] = $paragraph_id;
 
+    // Add Templates.
     // The idea that these 2 rules could live in the first IF.
     // Doesn't work because machine names are underscores and we need dashes.
     // $variables['classes_array'][] = 'paragraph paragraph--type--' .
@@ -38,12 +45,15 @@ function bootstrap_paragraphs_preprocess_entity(&$variables) {
     // $variables['classes_array'][] = 'paragraph--view-mode--' .
     // $variables['elements']['#view_mode'];.
   }
-  // So I loop through all of the entity types here.
+  // So I loop through all of the entity types here to Add Templates.
   if ($variables['entity_type'] == 'paragraphs_item' && $variables['elements']['#bundle'] == 'bp_blank') {
     $variables['classes_array'][] = 'paragraph paragraph--type--bp-blank';
   }
   if ($variables['entity_type'] == 'paragraphs_item' && $variables['elements']['#bundle'] == 'bp_block') {
     $variables['classes_array'][] = 'paragraph paragraph--type--bp-block';
+  }
+  if ($variables['entity_type'] == 'paragraphs_item' && $variables['elements']['#bundle'] == 'bp_card') {
+    $variables['classes_array'][] = 'paragraph paragraph--type--bp-card';
   }
   if ($variables['entity_type'] == 'paragraphs_item' && $variables['elements']['#bundle'] == 'bp_carousel') {
     $variables['classes_array'][] = 'paragraph paragraph--type--bp-carousel';
@@ -70,6 +80,9 @@ function bootstrap_paragraphs_preprocess_entity(&$variables) {
 
 /**
  * Implements hook_theme().
+ *
+ * Hook into the theme to add the templates.  This is from the Drupal 8 module.
+ * It currently does not work.  Need a Drupal 7 solution.
  */
 function bootstrap_paragraphs_theme($existing, $type, $theme, $path) {
   return [
@@ -83,6 +96,9 @@ function bootstrap_paragraphs_theme($existing, $type, $theme, $path) {
       'base hook' => 'paragraph',
     ],
     'paragraphs_item__bp_tabs' => [
+      'base hook' => 'paragraph',
+    ],
+    'paragraphs_item__bp_card' => [
       'base hook' => 'paragraph',
     ],
     'paragraphs_item__bp_columns_three_uneven' => [
