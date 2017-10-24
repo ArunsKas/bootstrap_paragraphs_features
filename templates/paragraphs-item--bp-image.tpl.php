@@ -27,23 +27,23 @@
  */
 ?>
 <?php
-  hide($content['field_background']);
-  hide($content['field_width']);
-  hide($content['field_link']);
+  hide($content['bp_background']);
+  hide($content['bp_width']);
+  hide($content['bp_link']);
 
   $link_field = '';
-  if (!empty($content['field_link'])) {
-    $link_field = ' ' . render($content['field_link']);
+  if (!empty($content['bp_link'])) {
+    $link_field = ' ' . render($content['bp_link']);
   }
 
   $width_field = '';
-  if (!empty($content['field_width'])) {
-    $width_field = ' ' . render($content['field_width']);
+  if (!empty($content['bp_width'])) {
+    $width_field = ' ' . render($content['bp_width']);
   }
 
   $background_field = '';
-  if (!empty($content['field_background'])) {
-    $background_field = ' ' . render($content['field_background']);
+  if (!empty($content['bp_background'])) {
+    $background_field = ' ' . render($content['bp_background']);
   }
 
   $classes_combined = '';
@@ -51,7 +51,7 @@
 ?>
 <div class="<?php print $classes_combined; ?>"<?php print $attributes; ?>>
   <div class="paragraph__column"<?php print $content_attributes; ?>>
-    <?php if (!empty($content['field_link'])): ?>
+    <?php if (!empty($content['bp_link'])): ?>
       <a href="<?php print $link_field; ?>"><?php print render($content); ?></a>
     <?php else: ?>
       <?php print render($content); ?>
