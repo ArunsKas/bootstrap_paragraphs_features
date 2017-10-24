@@ -1659,6 +1659,43 @@ function bootstrap_paragraphs_features_field_default_field_instances() {
     ),
   );
 
+    // Exported field_instance: 'paragraphs_item-xeno_hero-bp_background'.
+  $field_instances['paragraphs_item-xeno_hero-bp_background'] = array(
+    'bundle' => 'xeno_hero',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'hidden',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_key',
+        'weight' => 0,
+      ),
+      'paragraphs_editor_preview' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 1,
+      ),
+    ),
+    'entity_type' => 'paragraphs_item',
+    'field_name' => 'bp_background',
+    'label' => 'Background',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_select',
+      'weight' => 0,
+    ),
+  );
+
   // Exported field_instance:
   // 'paragraphs_item-xeno_hero-bp_background_image'.
   $field_instances['paragraphs_item-xeno_hero-bp_background_image'] = array(
