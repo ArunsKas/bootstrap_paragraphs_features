@@ -2,7 +2,7 @@
 
 /**
  * @file
- * Code for the Bootstrap Paragraphs feature.
+ * Code for the Bootstrap Paragraphs Features feature.
  */
 
 include_once 'bootstrap_paragraphs_features.features.inc';
@@ -12,7 +12,7 @@ include_once 'bootstrap_paragraphs_features.features.inc';
  *
  * Hook into the Paragraph items to reset the classes.
  */
-function bootstrap_paragraphs_preprocess_paragraphs_items(&$variables, $hook) {
+function bootstrap_paragraphs_features_preprocess_paragraphs_items(&$variables, $hook) {
   // Reset classes.
   $variables['classes_array'] = "";
   // Add classes.
@@ -24,7 +24,7 @@ function bootstrap_paragraphs_preprocess_paragraphs_items(&$variables, $hook) {
  *
  * Hook into the Paragraph item to add the ID and classes.
  */
-function bootstrap_paragraphs_preprocess_entity(&$variables) {
+function bootstrap_paragraphs_features_preprocess_entity(&$variables) {
   if ($variables['entity_type'] == 'paragraphs_item') {
     // Reset classes.
     $variables['classes_array'] = '';
@@ -83,7 +83,7 @@ function bootstrap_paragraphs_preprocess_entity(&$variables) {
  *
  * Hook into the theme to add field templates.
  */
-function bootstrap_paragraphs_theme($existing, $type, $theme, $path) {
+function bootstrap_paragraphs_features_theme($existing, $type, $theme, $path) {
   $theme_background_field = array();
   $theme_background_field['field__bp_background'] = array(
     'render element' => 'content',
@@ -140,7 +140,7 @@ function bootstrap_paragraphs_theme($existing, $type, $theme, $path) {
  *
  * Hook into the theme to add the templates.
  */
-function bootstrap_paragraphs_theme_registry_alter(&$theme_registry) {
+function bootstrap_paragraphs_features_theme_registry_alter(&$theme_registry) {
   // Get the path of this module.
   $module_path = drupal_get_path('module', 'bootstrap_paragraphs');
 
