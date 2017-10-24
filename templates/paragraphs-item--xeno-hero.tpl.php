@@ -41,7 +41,7 @@
 
   $background_image_field = '';
   if (!empty($content['bp_background_image'])) {
-    $background_image_field = '<div class="paragraph--type--xeno-hero__image">' . render($content['bp_background_image']) . '</div>';
+    $background_image_field = render($content['bp_background_image']);
   }
 
   $invert_field = '';
@@ -59,15 +59,17 @@
     $parallax_field = ' data-speed="' . render($content['bp_parallax']) . '"';
   }
 
-  $parallax_field = '';
+  $zoom_field = '';
   if (!empty($content['bp_zoom'])) {
-    $parallax_field = ' ' . render($content['bp_zoom']);
+    $zoom_field = ' ' . render($content['bp_zoom']);
   }
 
   $classes_combined = '';
-  $classes_combined = $classes . $background_field . $invert_field . $zoom_field;
+  $classes_combined = $classes . $invert_field . $zoom_field;
 ?>
-<div class="<?php print $classes_combined; ?>"<?php print $attributes; ?>>
-  <?php print $background_image_field; ?>
+<div class="<?php print $classes_combined; ?>"<?php print $attributes; ?><?php print $overlay_field; ?><?php print $parallax_field; ?>>
+  <div class="paragraph--type--xeno-hero__image<?php print $background_field; ?>">
+    <?php print $background_image_field; ?>
+  </div>
   <?php print render($content); ?>
 </div>
