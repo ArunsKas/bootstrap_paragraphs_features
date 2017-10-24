@@ -27,37 +27,37 @@
  */
 ?>
 <?php
-  hide($content['bp_background']);
-  hide($content['bp_width']);
-  hide($content['bp_slide_interval']);
-  hide($content['bp_slide_content']);
+  hide($content['field_background']);
+  hide($content['field_width']);
+  hide($content['field_slide_interval']);
+  hide($content['field_slide_content']);
 
   $width_field = '';
-  if (!empty($content['bp_width'])) {
-    $width_field = ' ' . render($content['bp_width']);
+  if (!empty($content['field_width'])) {
+    $width_field = ' ' . render($content['field_width']);
   }
 
   $background_field = '';
-  if (!empty($content['bp_background'])) {
-    $background_field = ' ' . render($content['bp_background']);
+  if (!empty($content['field_background'])) {
+    $background_field = ' ' . render($content['field_background']);
   }
 
   $classes_combined = '';
   $classes_combined = $classes . $background_field . $width_field . 'carousel slide';
 
   $slide_interval_field = '';
-  if (!empty($content['bp_slide_interval'])) {
-    $slide_interval_field = ' data-interval="' . render($content['bp_slide_interval']) . '"';
+  if (!empty($content['field_slide_interval'])) {
+    $slide_interval_field = ' data-interval="' . render($content['field_slide_interval']) . '"';
   }
 ?>
 
 <div class="<?php print $classes_combined; ?>"<?php print $attributes; ?> data-ride="carousel"<?php print $slide_interval_field; ?>>
-  <?php if(count($content['bp_slide_content']['#items']) > 1): ?>
+  <?php if(count($content['field_slide_content']['#items']) > 1): ?>
     <ol class="carousel-indicators">
       <?php
-        $slide_content = count($content['bp_slide_content']['#items']);
+        $slide_content = count($content['field_slide_content']['#items']);
         for($item = 0; $item < $slide_content; $item += 1){
-          if(render($content['bp_slide_content'][$item]) != ''){
+          if(render($content['field_slide_content'][$item]) != ''){
             if ($item === 0) {
               print '<li class="active" data-slide-to="' . $item . '" data-target="#' . $paragraph_id . '"></li>';
             }
@@ -71,24 +71,24 @@
   </ol>
   <div class="carousel-inner" role="list">
     <?php
-      $slide_content = count($content['bp_slide_content']['#items']);
+      $slide_content = count($content['field_slide_content']['#items']);
       for($item = 0; $item < $slide_content; $item += 1){
-        if(render($content['bp_slide_content'][$item]) != ''){
+        if(render($content['field_slide_content'][$item]) != ''){
           if ($item === 0) {
             print '<div class="paragraph--layout-slideshow__slide-' . $item . ' item carousel-item active" role="listitem">';
-            print render($content['bp_slide_content'][$item]);
+            print render($content['field_slide_content'][$item]);
             print '</div>';
           }
           else {
             print '<div class="paragraph--layout-slideshow__slide-' . $item . ' item carousel-item" role="listitem">';
-            print render($content['bp_slide_content'][$item]);
+            print render($content['field_slide_content'][$item]);
             print '</div>';
           }
         }
       }
     ?>
   </div>
-  <?php if(count($content['bp_slide_content']['#items']) > 1): ?>
+  <?php if(count($content['field_slide_content']['#items']) > 1): ?>
   <a class="left carousel-control" href="#<?php print $paragraph_id ?>" role="button" data-slide="prev">
     <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
     <span class="sr-only">Previous</span>
