@@ -27,11 +27,17 @@
  */
 ?>
 <?php
+  hide($content['bp_background']);
   hide($content['bp_background_image']);
   hide($content['bp_invert']);
   hide($content['bp_overlay']);
   hide($content['bp_parallax']);
   hide($content['bp_zoom']);
+
+  $background_field = '';
+  if (!empty($content['bp_background'])) {
+    $background_field = ' ' . render($content['bp_background']);
+  }
 
   $background_image_field = '';
   if (!empty($content['bp_background_image'])) {
@@ -59,7 +65,7 @@
   }
 
   $classes_combined = '';
-  $classes_combined = $classes . $invert_field . $zoom_field;
+  $classes_combined = $classes . $background_field . $invert_field . $zoom_field;
 ?>
 <div class="<?php print $classes_combined; ?>"<?php print $attributes; ?>>
   <?php print $background_image_field; ?>
