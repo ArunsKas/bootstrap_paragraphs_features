@@ -5,7 +5,7 @@
  * Code for the Bootstrap Paragraphs feature.
  */
 
-//include_once 'bootstrap_paragraphs_features.features.inc';
+include_once 'bootstrap_paragraphs_features.features.inc';
 
 /**
  * Process variables for paragraphs-items.tpl.php.
@@ -79,57 +79,135 @@ function bootstrap_paragraphs_preprocess_entity(&$variables) {
 }
 
 /**
+ * Implements hook_theme().
+ *
+ * Hook into the theme to add field templates.
+ */
+function bootstrap_paragraphs_theme($existing, $type, $theme, $path) {
+  $theme_background_field = array();
+  $theme_background_field['field__bp_background'] = array(
+    'render element' => 'content',
+    'base hook' => 'field',
+    'template' => 'field-bp-background',
+    'path' => drupal_get_path('module', 'bootstrap_paragraphs') . '/templates',
+  );
+
+  return $theme_width_background;
+
+  $theme_column_field = array();
+  $theme_column_field['field__bp_column_content'] = array(
+    'render element' => 'content',
+    'base hook' => 'field',
+    'template' => 'field--bp-column-content',
+    'path' => drupal_get_path('module', 'bootstrap_paragraphs') . '/templates',
+  );
+
+  return $theme_column_field;
+
+  $theme_column_2_field = array();
+  $theme_column_2_field['field__bp_column_content_2'] = array(
+    'render element' => 'content',
+    'base hook' => 'field',
+    'template' => 'field--bp-column-content-2',
+    'path' => drupal_get_path('module', 'bootstrap_paragraphs') . '/templates',
+  );
+
+  return $theme_column_2_field;
+
+  $theme_column_3_field = array();
+  $theme_column_3_field['field__bp_column_content_3'] = array(
+    'render element' => 'content',
+    'base hook' => 'field',
+    'template' => 'field--bp-column-content-3',
+    'path' => drupal_get_path('module', 'bootstrap_paragraphs') . '/templates',
+  );
+
+  return $theme_column_3_field;
+
+  $theme_width_field = array();
+  $theme_width_field['field__bp_width'] = array(
+    'render element' => 'content',
+    'base hook' => 'field',
+    'template' => 'field--bp-width',
+    'path' => drupal_get_path('module', 'bootstrap_paragraphs') . '/templates',
+  );
+
+  return $theme_width_field;
+}
+
+/**
  * Implements hook_theme_registry_alter().
  *
  * Hook into the theme to add the templates.
-
+ */
 function bootstrap_paragraphs_theme_registry_alter(&$theme_registry) {
   // Get the path of this module.
   $module_path = drupal_get_path('module', 'bootstrap_paragraphs');
+
   // Override the default template with our own.
   if (isset($theme_registry['paragraphs_items'])) {
     $theme_registry['paragraphs_items']['theme path'] = $module_path;
-    $theme_registry['paragraphs_items']['template'] = $module_path . '/templates/paragraphs-items';
+    $theme_registry['paragraphs_items']['path'] = $module_path . '/templates';
+    $theme_registry['paragraphs_items']['template'] = 'paragraphs-items';
   }
   if (isset($theme_registry['paragraphs_item'])) {
     $theme_registry['paragraphs_item']['theme path'] = $module_path;
-    $theme_registry['paragraphs_item']['template'] = $module_path . '/templates/paragraphs-item';
+    $theme_registry['paragraphs_item']['path'] = $module_path . '/templates';
+    $theme_registry['paragraphs_item']['template'] = 'paragraphs-item';
   }
   if (isset($theme_registry['paragraphs_item__bp_carousel'])) {
     $theme_registry['paragraphs_item__bp_carousel']['theme path'] = $module_path;
-    $theme_registry['paragraphs_item__bp_carousel']['template'] = $module_path . '/templates/paragraphs-item--bp-carousel';
+    $theme_registry['paragraphs_item__bp_carousel']['path'] = $module_path . '/templates';
+    $theme_registry['paragraphs_item__bp_carousel']['template'] = 'paragraphs-item--bp-carousel';
   }
   if (isset($theme_registry['paragraphs_item__bp_tabs'])) {
     $theme_registry['paragraphs_item__bp_tabs']['theme path'] = $module_path;
-    $theme_registry['paragraphs_item__bp_tabs']['template'] = $module_path . '/templates/paragraphs-item--bp-tabs';
+    $theme_registry['paragraphs_item__bp_tabs']['path'] = $module_path . '/templates';
+    $theme_registry['paragraphs_item__bp_tabs']['template'] = 'paragraphs-item--bp-tabs';
   }
   if (isset($theme_registry['paragraphs_item__bp_columns_three_uneven'])) {
     $theme_registry['paragraphs_item__bp_columns_three_uneven']['theme path'] = $module_path;
-    $theme_registry['paragraphs_item__bp_columns_three_uneven']['template'] = $module_path . '/templates/paragraphs-item--bp-columns-three-uneven';
+    $theme_registry['paragraphs_item__bp_columns_three_uneven']['path'] = $module_path . '/templates';
+    $theme_registry['paragraphs_item__bp_columns_three_uneven']['template'] = 'paragraphs-item--bp-columns-three-uneven';
   }
   if (isset($theme_registry['paragraphs_item__bp_columns_two_uneven'])) {
     $theme_registry['paragraphs_item__bp_columns_two_uneven']['theme path'] = $module_path;
-    $theme_registry['paragraphs_item__bp_columns_two_uneven']['template'] = $module_path . '/templates/paragraphs-item--bp-columns-two-uneven';
+    $theme_registry['paragraphs_item__bp_columns_two_uneven']['path'] = $module_path . '/templates';
+    $theme_registry['paragraphs_item__bp_columns_two_uneven']['template'] = 'paragraphs-item--bp-columns-two-uneven';
   }
   if (isset($theme_registry['paragraphs_item__bp_image'])) {
     $theme_registry['paragraphs_item__bp_image']['theme path'] = $module_path;
-    $theme_registry['paragraphs_item__bp_image']['template'] = $module_path . '/templates/paragraphs-item--bp-image';
+    $theme_registry['paragraphs_item__bp_image']['path'] = $module_path . '/templates';
+    $theme_registry['paragraphs_item__bp_image']['template'] = 'templates/paragraphs-item--bp-image';
   }
   if (isset($theme_registry['paragraphs_item__xeno_hero'])) {
     $theme_registry['paragraphs_item__xeno_hero']['theme path'] = $module_path;
-    $theme_registry['paragraphs_item__xeno_hero']['template'] = $module_path . '/templates/paragraphs-item--xeno-hero';
+    $theme_registry['paragraphs_item__xeno_hero']['path'] = $module_path . '/templates';
+    $theme_registry['paragraphs_item__xeno_hero']['template'] = 'paragraphs-item--xeno-hero';
   }
-  if (isset($theme_registry['field__field_column_content'])) {
-    $theme_registry['field__field_column_content']['theme path'] = $module_path;
-    $theme_registry['field__field_column_content']['template'] = $module_path . '/templates/field--field-column-content';
+  if (isset($theme_registry['field__bp_background'])) {
+    $theme_registry['field__bp_background']['theme path'] = $module_path;
+    $theme_registry['field__bp_background']['path'] = $module_path . '/templates';
+    $theme_registry['field__bp_background']['template'] = 'field--bp-background';
   }
-  if (isset($theme_registry['field__field_column_content_2'])) {
-    $theme_registry['field__field_column_content_2']['theme path'] = $module_path;
-    $theme_registry['field__field_column_content_2']['template'] = $module_path . '/templates/field--field-column-content-2';
+  if (isset($theme_registry['field__bp_column_content'])) {
+    $theme_registry['field__bp_column_content']['theme path'] = $module_path;
+    $theme_registry['field__bp_column_content']['path'] = $module_path . '/templates';
+    $theme_registry['field__bp_column_content']['template'] = 'field--bp-column-content';
   }
-  if (isset($theme_registry['field__field_column_content_3'])) {
-    $theme_registry['field__field_column_content_3']['theme path'] = $module_path;
-    $theme_registry['field__field_column_content_3']['template'] = $module_path . '/templates/field--field-column-content-3';
+  if (isset($theme_registry['field__bp_column_content_2'])) {
+    $theme_registry['field__bp_column_content_2']['theme path'] = $module_path;
+    $theme_registry['field__bp_column_content_2']['path'] = $module_path . '/templates';
+    $theme_registry['field__bp_column_content_2']['template'] = 'field--bp-column-content-2';
+  }
+  if (isset($theme_registry['field__bp_column_content_3'])) {
+    $theme_registry['field__bp_column_content_3']['theme path'] = $module_path;
+    $theme_registry['field__bp_column_content_3']['path'] = $module_path . '/templates';
+    $theme_registry['field__bp_column_content_3']['template'] = 'field--bp-column-content-3';
+  }
+  if (isset($theme_registry['field__bp_width'])) {
+    $theme_registry['field__bp_width']['theme path'] = $module_path;
+    $theme_registry['field__bp_width']['path'] = $module_path . '/templates';
+    $theme_registry['field__bp_width']['template'] = 'field--bp-width';
   }
 }
- */
