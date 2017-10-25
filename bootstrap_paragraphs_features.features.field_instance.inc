@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @file
  * bootstrap_paragraphs_features.features.field_instance.inc
@@ -51,7 +50,12 @@ function bootstrap_paragraphs_features_field_default_field_instances() {
   // Exported field_instance: 'paragraphs_item-bp_blank-bp_unrestricted'.
   $field_instances['paragraphs_item-bp_blank-bp_unrestricted'] = array(
     'bundle' => 'bp_blank',
-    'default_value' => NULL,
+    'default_value' => array(
+      0 => array(
+        'value' => ' ',
+        'format' => 'everything',
+      ),
+    ),
     'deleted' => 0,
     'description' => '',
     'display' => array(
@@ -75,7 +79,7 @@ function bootstrap_paragraphs_features_field_default_field_instances() {
     'label' => 'Unrestricted',
     'required' => 0,
     'settings' => array(
-      'text_processing' => 0,
+      'text_processing' => 1,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -83,6 +87,7 @@ function bootstrap_paragraphs_features_field_default_field_instances() {
       'module' => 'text',
       'settings' => array(
         'rows' => 5,
+        'show_token_tree' => 0,
       ),
       'type' => 'text_textarea',
       'weight' => 2,
@@ -589,8 +594,7 @@ function bootstrap_paragraphs_features_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance:
-  // 'paragraphs_item-bp_carousel-bp_slide_interval'.
+  // Exported field_instance: 'paragraphs_item-bp_carousel-bp_slide_interval'.
   $field_instances['paragraphs_item-bp_carousel-bp_slide_interval'] = array(
     'bundle' => 'bp_carousel',
     'default_value' => NULL,
@@ -1201,8 +1205,7 @@ function bootstrap_paragraphs_features_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance:
-  // 'paragraphs_item-bp_columns_two_uneven-bp_width'.
+  // Exported field_instance: 'paragraphs_item-bp_columns_two_uneven-bp_width'.
   $field_instances['paragraphs_item-bp_columns_two_uneven-bp_width'] = array(
     'bundle' => 'bp_columns_two_uneven',
     'default_value' => NULL,
@@ -1491,7 +1494,7 @@ function bootstrap_paragraphs_features_field_default_field_instances() {
     'label' => 'Text',
     'required' => 0,
     'settings' => array(
-      'text_processing' => 0,
+      'text_processing' => 1,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -1499,6 +1502,7 @@ function bootstrap_paragraphs_features_field_default_field_instances() {
       'module' => 'text',
       'settings' => array(
         'rows' => 5,
+        'show_token_tree' => 0,
       ),
       'type' => 'text_textarea',
       'weight' => 2,
@@ -1659,7 +1663,7 @@ function bootstrap_paragraphs_features_field_default_field_instances() {
     ),
   );
 
-    // Exported field_instance: 'paragraphs_item-xeno_hero-bp_background'.
+  // Exported field_instance: 'paragraphs_item-xeno_hero-bp_background'.
   $field_instances['paragraphs_item-xeno_hero-bp_background'] = array(
     'bundle' => 'xeno_hero',
     'default_value' => NULL,
@@ -1696,8 +1700,7 @@ function bootstrap_paragraphs_features_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance:
-  // 'paragraphs_item-xeno_hero-bp_background_image'.
+  // Exported field_instance: 'paragraphs_item-xeno_hero-bp_background_image'.
   $field_instances['paragraphs_item-xeno_hero-bp_background_image'] = array(
     'bundle' => 'xeno_hero',
     'deleted' => 0,
@@ -1783,20 +1786,30 @@ function bootstrap_paragraphs_features_field_default_field_instances() {
       'add_mode' => 'select',
       'allowed_bundles' => array(
         'bp_blank' => -1,
+        'bp_block' => -1,
+        'bp_card' => -1,
         'bp_carousel' => -1,
+        'bp_column_wrapper' => -1,
         'bp_columns' => -1,
         'bp_columns_three_uneven' => -1,
+        'bp_columns_two_uneven' => -1,
         'bp_image' => -1,
         'bp_simple' => -1,
+        'bp_view' => -1,
         'xeno_hero' => -1,
       ),
       'bundle_weights' => array(
         'bp_blank' => 2,
+        'bp_block' => 11,
+        'bp_card' => 12,
         'bp_carousel' => 3,
+        'bp_column_wrapper' => 17,
         'bp_columns' => 4,
         'bp_columns_three_uneven' => 5,
+        'bp_columns_two_uneven' => 16,
         'bp_image' => 6,
         'bp_simple' => 7,
+        'bp_view' => 20,
         'xeno_hero' => 8,
       ),
       'default_edit_mode' => 'open',

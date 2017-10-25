@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @file
  * bootstrap_paragraphs_features.features.field_base.inc
@@ -144,28 +143,6 @@ function bootstrap_paragraphs_features_field_default_field_bases() {
     'type' => 'blockreference',
   );
 
-  // Exported field_base: 'bp_image'.
-  $field_bases['bp_image'] = array(
-    'active' => 1,
-    'cardinality' => 1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'bp_image',
-    'indexes' => array(
-      'fid' => array(
-        0 => 'fid',
-      ),
-    ),
-    'locked' => 0,
-    'module' => 'image',
-    'settings' => array(
-      'default_image' => 0,
-      'uri_scheme' => 'public',
-    ),
-    'translatable' => 0,
-    'type' => 'image',
-  );
-
   // Exported field_base: 'bp_card_content'.
   $field_bases['bp_card_content'] = array(
     'active' => 1,
@@ -300,7 +277,7 @@ function bootstrap_paragraphs_features_field_default_field_bases() {
   // Exported field_base: 'bp_content'.
   $field_bases['bp_content'] = array(
     'active' => 1,
-    'cardinality' => 1,
+    'cardinality' => -1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'bp_content',
